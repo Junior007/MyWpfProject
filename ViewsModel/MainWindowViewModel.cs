@@ -18,13 +18,6 @@ namespace MyWpfProject.ViewsModel
 
         public MainWindowViewModel(IDataService dataService)
         {
-            _dataService = dataService??null;
-            DataDetails = new ObservableCollection<DataDetail>(_dataService.GetDataDetails());
-        }
-
-        public MainWindowViewModel()
-        {
-            IDataService dataService = new DataService();
             _dataService = dataService ?? null;
             DataDetails = new ObservableCollection<DataDetail>(_dataService.GetDataDetails());
         }
