@@ -12,11 +12,11 @@ using System.Windows.Input;
 
 namespace MyWpfProject.ViewsModel
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
         private IDataService _dataService;
 
-        public MainWindowViewModel(IDataService dataService)
+        public MainViewModel(IDataService dataService)
         {
             _dataService = dataService ?? null;
             DataDetails = new ObservableCollection<DataDetail>(_dataService.GetDataDetails());

@@ -17,9 +17,9 @@ using System.Windows.Shapes;
 
 namespace MyWpfProject.Views
 {
-    public partial class MainWindow : Window
+    public partial class MainView : Window
     {
-        public MainWindow(MainWindowViewModel mainWindowViewModel)
+        public MainView(MainViewModel mainWindowViewModel)
         {
             Resources.Add("DataView", mainWindowViewModel);
             InitializeComponent();
