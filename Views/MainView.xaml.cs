@@ -21,7 +21,7 @@ namespace MyWpfProject.Views
     {
         public MainView(MainViewModel mainWindowViewModel)
         {
-            Resources.Add("DataView", mainWindowViewModel);
+            //Resources.Add("DataView", mainWindowViewModel);
             InitializeComponent();
         }
     }

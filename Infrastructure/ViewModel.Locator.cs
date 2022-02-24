@@ -1,12 +1,74 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MyWpfProject.Infrastructure.IoC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyWpfProject.Infrastructure.ViewModel
 {
-    internal class Locator
+    public static class Locator
     {
+
+
+
+        
+        public static bool GetIsAutomaticLocator(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsAutomaticLocatorProperty);
+        }
+        public static void SetIsAutomaticLocator(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsAutomaticLocatorProperty, value);
+        }
+
+
+        public static readonly DependencyProperty IsAutomaticLocatorProperty = DependencyProperty.RegisterAttached("IsAutomaticLocator", typeof(bool), typeof(Locator), new PropertyMetadata(false, IsAutomaticLocatorChanged));
+        private static void IsAutomaticLocatorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var callOwner = d as FrameworkElement;
+            var className = GetViewModelClassName(d);
+            var userControl = GetInstanceOf(callOwner.GetType(), className);
+            callOwner.DataContext = userControl;
+        }
+        public static string GetViewModelClassName(DependencyObject obj)
+        {
+            return  (string)obj.GetValue(ViewModelClassNameProperty);
+        }
+        public static void SetViewModelClassName(DependencyObject obj, string value)
+        {
+            obj.SetValue(ViewModelClassNameProperty, value);
+        }
+        public static readonly DependencyProperty ViewModelClassNameProperty = DependencyProperty.RegisterAttached("ViewModelClassName", typeof(string), typeof(Locator), new PropertyMetadata(null));
+
+        private static object GetInstanceOf(Type dependencyPropertyType, string className)
+        {
+            //var assembly = dependencyPropertyType.Assembly;
+
+            //var assemblyTypes = assembly.GetTypes();
+
+            var viewModelName = GetClassName(dependencyPropertyType, className);
+
+            //var userControlType = assemblyTypes.FirstOrDefault(a => a.Name.Contains(classNameDef));
+
+            //if (userControlType == null) throw new ArgumentException($"Not exist a type {classNameDef} in the asembly {assembly.FullName}");
+
+            //var result = Activator.CreateInstance(userControlType);
+
+            Type viewModel = dependencyPropertyType.Assembly.GetTypes().FirstOrDefault(t=>t.Name == viewModelName);
+
+            var result = DependencyContainer.ServiceProvider().GetService(viewModel);
+            return result;
+        }
+
+        private static string GetClassName(Type dependencyPropertyType, string className)
+        {
+            if (string.IsNullOrWhiteSpace(className)) return $"{dependencyPropertyType.Name}Model";
+
+            return className;
+        }
+        
     }
 }
