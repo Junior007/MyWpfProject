@@ -1,10 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using MyWpfProject.Infrastructure.IoC;
+﻿using MyWpfProject.Infrastructure.IoC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MyWpfProject.Infrastructure.ViewModel
@@ -45,17 +42,7 @@ namespace MyWpfProject.Infrastructure.ViewModel
 
         private static object GetInstanceOf(Type dependencyPropertyType, string className)
         {
-            //var assembly = dependencyPropertyType.Assembly;
-
-            //var assemblyTypes = assembly.GetTypes();
-
             var viewModelName = GetClassName(dependencyPropertyType, className);
-
-            //var userControlType = assemblyTypes.FirstOrDefault(a => a.Name.Contains(classNameDef));
-
-            //if (userControlType == null) throw new ArgumentException($"Not exist a type {classNameDef} in the asembly {assembly.FullName}");
-
-            //var result = Activator.CreateInstance(userControlType);
 
             Type viewModel = dependencyPropertyType.Assembly.GetTypes().FirstOrDefault(t=>t.Name == viewModelName);
 

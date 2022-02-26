@@ -19,7 +19,8 @@ namespace MyWpfProject.Views
 {
     public partial class MainView : Window
     {
-        public MainView(MainViewModel mainWindowViewModel)
+        //public MainView(MainViewModel mainWindowViewModel)
+        public MainView()
         {
             //Resources.Add("DataView", mainWindowViewModel);
             InitializeComponent();

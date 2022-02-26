@@ -2,11 +2,6 @@
 using MyWpfProject.Services;
 using MyWpfProject.Views;
 using MyWpfProject.ViewsModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyWpfProject.Infrastructure.IoC
 {
