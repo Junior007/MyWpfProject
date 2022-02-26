@@ -25,10 +25,9 @@ namespace MyWpfProject.Infrastructure.IoC
             ServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<IDataService, DataService>();
-
             services.AddSingleton<MainView>();
 
-
+            //ViewModel
             var nameViews = ViewsModel.Infrastructure.GetViews.Types();
             foreach(var nameView in nameViews)
             {
