@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
-namespace MyWpfProject.Infrastructure.ViewModel
+namespace MyWpfProject.ViewsModel.Infrastructure
 {
     public static class Locator
     {
@@ -44,7 +44,7 @@ namespace MyWpfProject.Infrastructure.ViewModel
         {
             var viewModelName = GetClassName(dependencyPropertyType, className);
 
-            Type viewModel = dependencyPropertyType.Assembly.GetTypes().FirstOrDefault(t=>t.Name == viewModelName);
+            Type? viewModel = ViewsModel.Infrastructure.GetViews.Types().FirstOrDefault(t => t.Name == viewModelName); ;
 
             var result = DependencyContainer.ServiceProvider().GetService(viewModel);
             return result;

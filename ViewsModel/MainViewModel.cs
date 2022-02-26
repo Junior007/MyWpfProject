@@ -18,7 +18,8 @@ namespace MyWpfProject.ViewsModel
 
         public MainViewModel(IDataService dataService)
         {
-            _dataService = dataService ?? null;
+            _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
+
             DataDetails = new ObservableCollection<DataDetail>(_dataService.GetDataDetails());
         }
 

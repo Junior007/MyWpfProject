@@ -2,6 +2,7 @@
 using MyWpfProject.Services;
 using MyWpfProject.Views;
 using MyWpfProject.ViewsModel;
+using System.ComponentModel;
 
 namespace MyWpfProject.Infrastructure.IoC
 {
@@ -26,8 +27,17 @@ namespace MyWpfProject.Infrastructure.IoC
             services.AddSingleton<IDataService, DataService>();
 
             services.AddSingleton<MainView>();
-            services.AddScoped<MainViewModel>();
+
+
+            var nameViews = ViewsModel.Infrastructure.GetViews.Types();
+            foreach(var nameView in nameViews)
+            {
+                services.AddSingleton(nameView);
+            }
+            
+
             return services;
+
         }
 
     }
