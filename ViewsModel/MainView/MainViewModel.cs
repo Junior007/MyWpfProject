@@ -10,15 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MyWpfProject.ViewsModel
+namespace MyWpfProject.ViewsModel.MainView
 {
     public class MainViewModel : INotifyPropertyChanged
     {
         private IDataService _dataService;
+        public int MyProperty { get; set; }
+
+        public ICommand _addCommand;
+        public ICommand AddCommand  { get => _addCommand; }
+        public ICommand _deleteCommand;
+        public ICommand DeleteCommand { get => _deleteCommand; }
 
         public MainViewModel(IDataService dataService)
         {
             _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
+
+            _addCommand = new AddCommand();
+            _deleteCommand = new DeleteCommand();
 
             DataDetails = new ObservableCollection<DataDetail>(_dataService.GetDataDetails());
         }
@@ -41,5 +50,8 @@ namespace MyWpfProject.ViewsModel
                 OnPropertyChanged();
             }
         }
+
+
+
     }
 }
