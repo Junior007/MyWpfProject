@@ -24,7 +24,5 @@ namespace MyWpfProject.ViewsModel.MainView
             //DataDetail data = parameter as DataDetail;
             MessageBoxResult result = MessageBox.Show("AddCommand Hello MessageBox");
         }
-
-
     }
 }
