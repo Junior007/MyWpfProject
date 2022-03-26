@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\IoC.DependencyContainer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove=".gitattributes" />
     <None Remove=".gitignore" />
     <None Remove="README.md" />
@@ -15,6 +19,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\wpf.learning.application\wpf.learning.application.csproj" />
+    <ProjectReference Include="..\wpf.learning.IoC\wpf.learning.IoC.csproj" />
   </ItemGroup>
 
 </Project>

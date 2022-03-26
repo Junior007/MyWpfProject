@@ -1,7 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyWpfProject.Infrastructure.IoC;
+using wpf.learning.Infrastructure;
 using MyWpfProject.Views;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Windows;
+using wpf.learning.IoC;
 
 namespace MyWpfProject
 {
@@ -14,7 +18,8 @@ namespace MyWpfProject
         }
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            ServiceProvider serviceProvider = DependencyContainer.ServiceProvider();
+            IEnumerable<Type> viewTypes = GetViews.Types();
+            ServiceProvider serviceProvider = Container.SetMainView<MainView>().SetViews(viewTypes).Build();
             var mainWindow = serviceProvider.GetService<MainView>();
             mainWindow.Show();
         }

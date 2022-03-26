@@ -1,8 +1,8 @@
-﻿using MyWpfProject.Infrastructure.IoC;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Windows;
+using wpf.learning.Infrastructure;
+using wpf.learning.IoC;
 
 namespace MyWpfProject.ViewsModel.Infrastructure
 {
@@ -44,9 +44,9 @@ namespace MyWpfProject.ViewsModel.Infrastructure
         {
             var viewModelName = GetClassName(dependencyPropertyType, className);
 
-            Type? viewModel = GetViews.Types().FirstOrDefault(t => t.Name == viewModelName); ;
+            Type? viewModel = GetViews.Types().FirstOrDefault(t => t.Name == viewModelName);
 
-            var result = DependencyContainer.ServiceProvider().GetService(viewModel);
+            var result = Container.ServiceProvider.GetService(viewModel);
             return result;
         }
 
