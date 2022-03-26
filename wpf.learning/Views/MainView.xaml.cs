@@ -1,5 +1,4 @@
-﻿using MyWpfProject.Services;
-using MyWpfProject.ViewsModel;
+﻿using MyWpfProject.ViewsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

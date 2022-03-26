@@ -22,6 +22,7 @@ namespace MyWpfProject
             ServiceProvider serviceProvider = DependencyContainer
                 .SetMainView<MainView>()
                 .SetViews(viewTypes)
+                .SetServices()
                 .BuildServiceProvider();
 
             var mainWindow = serviceProvider.GetService<MainView>();

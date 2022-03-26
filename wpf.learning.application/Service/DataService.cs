@@ -9,7 +9,7 @@ namespace wpf.learning.application.Service
 {
     public class DataService : IDataService
     {
-        public List<DataDetail> GetDataDetails()
+        public IEnumerable<DataDetail> GetDataDetails()
         {
             List<DataDetail> dataDetails = new List<DataDetail>();
             for (int i = 0; i < 10; i++)

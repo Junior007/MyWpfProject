@@ -7,25 +7,18 @@ namespace wpf.learning.IoC
         private DependencyContainer _container;
 
         private SetterViewsBuilder() { }
-
         internal SetterViewsBuilder(DependencyContainer container)
         {
             _container = container;
         }
 
-        public ServiceProvider BuildServiceProvider()
-        {
-            _container.BuildServiceProvider();
-            return _container._serviceProvider;
-        }
-
-        public SetterViewsBuilder SetViews(IEnumerable<Type> viewTypes)
+        public SetterServicesBuilder SetViews(IEnumerable<Type> viewTypes)
         {
             foreach (var viewType in viewTypes)
             {
-                _container._services.AddSingleton(viewType);
+                _container.Services.AddSingleton(viewType);
             }
-            return this;
+            return new SetterServicesBuilder(_container);
         }
     }
 }

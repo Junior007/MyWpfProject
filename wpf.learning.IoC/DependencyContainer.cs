@@ -6,7 +6,7 @@ namespace wpf.learning.IoC
     {
         private static DependencyContainer _container;
 
-        public static IServiceProvider ServiceProvider { get => _container._serviceProvider; }
+        public static IServiceProvider ServiceProvider { get => _container.SrvcProvider; }
         public static SetterViewsBuilder SetMainView<T>() where T : class
         {
             ServiceCollection services = new ServiceCollection();
@@ -17,17 +17,15 @@ namespace wpf.learning.IoC
             return new SetterViewsBuilder(_container);
         }
 
-        internal ServiceProvider _serviceProvider;
-        internal ServiceCollection _services;
+        internal ServiceProvider SrvcProvider;
+        internal ServiceCollection Services;
         private DependencyContainer(ServiceCollection services)
         {
-            _services = services;
+            Services = services;
         }
         internal void BuildServiceProvider()
         {
-            _serviceProvider = _services.BuildServiceProvider();
+            SrvcProvider = Services.BuildServiceProvider();
         }
-
-
     }
 }
