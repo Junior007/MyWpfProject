@@ -1,39 +1,33 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using wpf.learning.application.Service;
 
 namespace wpf.learning.IoC
 {
     public class DependencyContainer
     {
-        private static ServiceProvider _serviceProvider;
+        private static DependencyContainer _container;
 
-        public static ServiceProvider ServiceProvider(IEnumerable<System.Type> nameViews)
-        {
-            if (_serviceProvider == null)
-            {
-                ServiceCollection services = RegisterServices(nameViews);
-                _serviceProvider = services.BuildServiceProvider();
-            }
-
-            return _serviceProvider;
-        }
-
-        private static ServiceCollection RegisterServices(IEnumerable<System.Type> nameViews)
+        public static IServiceProvider ServiceProvider { get => _container._serviceProvider; }
+        public static SetterViewsBuilder SetMainView<T>() where T : class
         {
             ServiceCollection services = new ServiceCollection();
+            services.AddSingleton<T>();
 
-            //ViewModel
-            foreach (var nameView in nameViews)
-            {
-                services.AddSingleton(nameView);
-            }
+            _container = new DependencyContainer(services);
 
-
-            services.AddSingleton<IDataService, DataService>();
-            //services.AddSingleton<MainView>();
-
-            return services;
+            return new SetterViewsBuilder(_container);
         }
+
+        internal ServiceProvider _serviceProvider;
+        internal ServiceCollection _services;
+        private DependencyContainer(ServiceCollection services)
+        {
+            _services = services;
+        }
+        internal void BuildServiceProvider()
+        {
+            _serviceProvider = _services.BuildServiceProvider();
+        }
+
 
     }
 }

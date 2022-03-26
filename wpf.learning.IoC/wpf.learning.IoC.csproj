@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Compile Remove="AutoMapperProfiles.cs" />
-    <Compile Remove="DependencyContainer.cs" />
     <Compile Remove="GetViews.cs" />
     <Compile Remove="IoC.DependencyContainer.cs" />
   </ItemGroup>
