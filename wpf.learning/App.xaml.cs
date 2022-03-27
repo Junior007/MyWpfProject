@@ -19,11 +19,11 @@ namespace MyWpfProject
         private void OnStartup(object sender, StartupEventArgs e)
         {
             IEnumerable<Type> viewTypes = GetViews.Types();
-            ServiceProvider serviceProvider = DependencyContainer
+            ServiceProvider serviceProvider = DependencyBuilder
                 .SetMainView<MainView>()
                 .SetViews(viewTypes)
                 .SetServices()
-                .BuildServiceProvider();
+                .Build();
 
             var mainWindow = serviceProvider.GetService<MainView>();
             mainWindow.Show();

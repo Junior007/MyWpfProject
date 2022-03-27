@@ -46,7 +46,7 @@ namespace MyWpfProject.ViewsModel.Infrastructure
 
             Type? viewModel = GetViews.Types().FirstOrDefault(t => t.Name == viewModelName);
 
-            var result = DependencyContainer.ServiceProvider.GetService(viewModel);
+            var result = DependencyBuilder.ServiceProvider.GetService(viewModel);
             return result;
         }
 

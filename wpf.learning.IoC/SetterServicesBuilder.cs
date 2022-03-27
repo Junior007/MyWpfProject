@@ -10,24 +10,19 @@ namespace wpf.learning.IoC
 {
     public class SetterServicesBuilder
     {
-        private DependencyContainer _container;
+        private Container _container;
 
         private SetterServicesBuilder(){}
-        internal SetterServicesBuilder(DependencyContainer container)
+        internal SetterServicesBuilder(Container container)
         {
             _container = container;
         }
 
-        public ServiceProvider BuildServiceProvider()
-        {
-            _container.BuildServiceProvider();
-            return _container.SrvcProvider;
-        }
-        public SetterServicesBuilder SetServices()
+        public Builder SetServices()
         {
             _container.Services.AddSingleton<IDataService, DataService>();
 
-            return this;
+            return new Builder(_container); ;
         }
 
 
