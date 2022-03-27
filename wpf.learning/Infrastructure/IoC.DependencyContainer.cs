@@ -28,7 +28,7 @@ namespace MyWpfProject.Infrastructure.IoC
             services.AddSingleton<MainView>();
 
             //ViewModel
-            var nameViews = ViewsModel.Infrastructure.GetViews.Types();
+            var nameViews = GetViews.Types();
             foreach(var nameView in nameViews)
             {
                 services.AddSingleton(nameView);

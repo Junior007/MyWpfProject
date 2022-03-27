@@ -1,9 +1,4 @@
-﻿using MyWpfProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -27,7 +22,6 @@ namespace MyWpfProject.ViewsModel.MainView
         {
             //DataDetail data = parameter as DataDetail;
             MessageBoxResult result = MessageBox.Show("DeleteCommand Hello MessageBox");
-
         }
     }
 }

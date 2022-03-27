@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-namespace MyWpfProject.ViewsModel.Infrastructure
+
+namespace wpf.learning.Infrastructure
 {
     internal class GetViews
     {

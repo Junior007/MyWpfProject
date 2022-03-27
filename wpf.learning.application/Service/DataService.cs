@@ -1,15 +1,15 @@
-﻿using MyWpfProject.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpf.learning.application.Models;
 
-namespace MyWpfProject.Services
+namespace wpf.learning.application.Service
 {
     public class DataService : IDataService
     {
-        public List<DataDetail> GetDataDetails()
+        public IEnumerable<DataDetail> GetDataDetails()
         {
             List<DataDetail> dataDetails = new List<DataDetail>();
             for (int i = 0; i < 10; i++)
@@ -17,5 +17,7 @@ namespace MyWpfProject.Services
 
             return dataDetails;
         }
+
+
     }
 }
